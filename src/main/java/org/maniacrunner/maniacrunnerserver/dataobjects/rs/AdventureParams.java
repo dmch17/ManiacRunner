@@ -5,12 +5,16 @@ import java.util.List;
 
 public class AdventureParams {
 	public String AdventureId;
+	public String AdventureCost;
 	public List<LevelParams> Levels;
 	
-	public AdventureParams() {}
-	
-	public AdventureParams(String adventureId){
-		AdventureId = adventureId;
+	public AdventureParams(){
 		Levels = new ArrayList<LevelParams>();
 	}
+	
+/*	public AdventureParams(String id, String adventureId, String adventureCost){
+		Id = id;
+		AdventureId = adventureId;
+		Levels = new ArrayList<LevelParams>();
+	}*/
 }

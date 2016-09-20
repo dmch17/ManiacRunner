@@ -4,5 +4,5 @@ public class PlayerAuthInfoParamsRq {
 	public String PlayerId;
 	public String AuthKey;
 	
-	public PlayerAuthInfoParamsRq(){}
+	public PlayerAuthInfoParamsRq() {}
 }

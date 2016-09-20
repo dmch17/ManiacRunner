@@ -13,7 +13,8 @@ import org.maniacrunner.maniacrunnerserver.dataobjects.rs.*;
 
 @Path("/gameservice")
 public class GameService{
-	public static final float EnergyPerMinute = 1f; 
+	public static final float EnergyPerMinute = 1f;
+	
 	private DataProvider dataProvider;
 	
 	public GameService() {
@@ -43,6 +44,30 @@ public class GameService{
 	}
 	
 	@POST
+	@Path("setplayerparams/{playerId}/levelstart")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public LevelStartedParamsRs setLevelStarted(@PathParam("playerId")String playerId, LevelStartedParamsRq levelStartedParams){
+		return dataProvider.setLevelStarted(playerId, levelStartedParams);
+	}
+	
+	@POST
+	@Path("setplayerparams/{playerId}/levelfinalize")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public LevelFinalizedParamsRs setLevelFinalized(@PathParam("playerId")String playerId, LevelFinalizedParamsRq levelFinalizedParams){
+		return dataProvider.setLevelFinalized(playerId, levelFinalizedParams);
+	}
+	
+	@POST
+	@Path("setplayerparams/{playerId}/levelreset")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public LevelResetParamsRs setLevelReset(@PathParam("playerId")String playerId, LevelResetParamsRq levelResetParams){
+		return dataProvider.setLevelReset(playerId, levelResetParams);
+	}
+	
+/*	@POST
 	@Path("/setplayerparams/{playerId}/value")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void setPlayerValueParams(PlayerValueParamsRq params, @PathParam("playerId")String playerId){
@@ -74,7 +99,7 @@ public class GameService{
 	public void deletePlayerEnergyParams(EnergyParamsRq energyParams, @PathParam("playerId") String playerId){
 		dataProvider.reduceEnergy(playerId, energyParams);
 	}
-	
+	*/
 	@POST
 	@Path("/deleteplayerparams/{playerId}/addcoinbuffnumber")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -95,7 +120,7 @@ public class GameService{
 	public void deletePlayerStopShootingBuffNumberParams(StopShootingBuffNumberParamsRq stopShootingBuffNumberParams, @PathParam("playerId") String playerId){
 		dataProvider.reduceStopShootingBuffNumber(playerId, stopShootingBuffNumberParams);
 	}
-	
+	/*
 	@POST
 	@Path("setplayerparams/{playerId}/sound")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -137,5 +162,5 @@ public class GameService{
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void createPlayerOpenAdventureParams(OpenAdventureParamsRq openAdventureParams, @PathParam("playerId") String playerId){
 		dataProvider.openAdventure(playerId, openAdventureParams);
-	}	
+	}	*/
 }
